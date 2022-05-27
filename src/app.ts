@@ -71,7 +71,7 @@ mongoose
   .connect("mongodb+srv://theWhiteWolf2411:fJKbT4qkOnKzp0Gp@cluster0.kvrmd.mongodb.net/saytel?retryWrites=true&w=majority")
   .then(() => {
     seedDB();
-    app.listen(process.env.PORT || port);
+    app.listen(process.env.PORT);
   })
   .catch((err) => {
     console.log(err);
