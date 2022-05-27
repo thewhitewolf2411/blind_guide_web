@@ -39,7 +39,7 @@ const UserSeeder_1 = __importDefault(require("./database/seeders/UserSeeder"));
 const app = (0, express_1.default)();
 const port = 5000;
 app.use(body_parser_1.default.json());
-app.use("/storage/audio", express_1.default.static(path_1.default.join("storage", "audio")));
+app.use("/storage/audio", express_1.default.static(path_1.default.join(__dirname, 'storage', 'audio')));
 app.use(express_1.default.static(path_1.default.join(__dirname, '/views/')));
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
@@ -78,7 +78,7 @@ mongoose_1.default
     .connect("mongodb+srv://theWhiteWolf2411:fJKbT4qkOnKzp0Gp@cluster0.kvrmd.mongodb.net/saytel?retryWrites=true&w=majority")
     .then(() => {
     (0, UserSeeder_1.default)();
-    app.listen(process.env.PORT);
+    app.listen(process.env.PORT || port);
 })
     .catch((err) => {
     console.log(err);

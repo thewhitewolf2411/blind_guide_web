@@ -17,7 +17,7 @@ const port = 5000;
 
 app.use(bodyParser.json());
 
-app.use("/storage/audio", express.static(path.join("storage", "audio")));
+app.use("/storage/audio", express.static(path.join(__dirname, 'storage', 'audio')));
 
 app.use(express.static(path.join(__dirname, '/views/')));
 
@@ -71,7 +71,7 @@ mongoose
   .connect("mongodb+srv://theWhiteWolf2411:fJKbT4qkOnKzp0Gp@cluster0.kvrmd.mongodb.net/saytel?retryWrites=true&w=majority")
   .then(() => {
     seedDB();
-    app.listen(process.env.PORT);
+    app.listen(process.env.PORT || port);
   })
   .catch((err) => {
     console.log(err);
